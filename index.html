@@ -257,6 +257,7 @@ img { max-width: 100%; display: block; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; }
 }
+.logo-fallback { display:none; font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--ink); text-align:center; line-height:1.2; }
 </style>
 </head>
 
@@ -323,7 +324,7 @@ img { max-width: 100%; display: block; }
       <!-- TU/e -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/tue.png" alt="TU/e">
+          <img src="logos/tue.png" alt="TU/e" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">TU/e</span>
         </div>
         <div class="org-label">University</div>
       </div>
@@ -331,7 +332,7 @@ img { max-width: 100%; display: block; }
       <!-- Tilburg -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/tilburg.png" alt="Tilburg University">
+          <img src="logos/tilburg.png" alt="Tilburg University" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Tilburg University</span>
         </div>
         <div class="org-label">University</div>
       </div>
@@ -339,7 +340,7 @@ img { max-width: 100%; display: block; }
       <!-- Bocconi -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/bocconi.png" alt="Università Bocconi">
+          <img src="logos/bocconi.png" alt="Università Bocconi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Università Bocconi</span>
         </div>
         <div class="org-label">University</div>
       </div>
@@ -347,7 +348,7 @@ img { max-width: 100%; display: block; }
       <!-- Censo -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/censo.png" alt="Censo">
+          <img src="logos/censo.png" alt="Censo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Censo</span>
         </div>
         <div class="org-label">Client Project</div>
       </div>
@@ -355,7 +356,7 @@ img { max-width: 100%; display: block; }
       <!-- Wärtsilä -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/wartsila.png" alt="Wärtsilä">
+          <img src="logos/wartsila.png" alt="Wärtsilä" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Wärtsilä</span>
         </div>
         <div class="org-label">Client Project</div>
       </div>
@@ -363,7 +364,7 @@ img { max-width: 100%; display: block; }
       <!-- Forescout -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/forescout.png" alt="Forescout">
+          <img src="logos/forescout.png" alt="Forescout" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Forescout</span>
         </div>
         <div class="org-label">Client Project</div>
       </div>
@@ -371,7 +372,7 @@ img { max-width: 100%; display: block; }
       <!-- Van Lanschot Kempen (Last) -->
       <div class="org-card" style="padding: 20px 10px;">
         <div class="logo-slot">
-          <img src="logos/vanlaschot.png" alt="Van Lanschot Kempen">
+          <img src="logos/vanlaschot.png" alt="Van Lanschot Kempen" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Van Lanschot Kempen</span>
         </div>
         <div class="org-label">Experience</div>
       </div>
@@ -512,7 +513,7 @@ img { max-width: 100%; display: block; }
     <div class="education-list">
       <article class="edu-card">
         <div class="edu-logo">
-          <img src="logos/tue.png" alt="TU/e">
+          <img src="logos/tue.png" alt="TU/e" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">TU/e</span>
         </div>
         <div class="edu-content">
           <h3>Eindhoven University of Technology</h3>
@@ -524,7 +525,7 @@ img { max-width: 100%; display: block; }
 
       <article class="edu-card">
         <div class="edu-logo">
-          <img src="logos/tilburg.png" alt="Tilburg University">
+          <img src="logos/tilburg.png" alt="Tilburg University" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Tilburg University</span>
         </div>
         <div class="edu-content">
           <h3>Tilburg University</h3>
@@ -536,7 +537,7 @@ img { max-width: 100%; display: block; }
 
       <article class="edu-card">
         <div class="edu-logo">
-          <img src="logos/bocconi.png" alt="Bocconi">
+          <img src="logos/bocconi.png" alt="Bocconi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Bocconi</span>
         </div>
         <div class="edu-content">
           <h3>Università Bocconi</h3>
@@ -565,7 +566,7 @@ img { max-width: 100%; display: block; }
 
       <article class="exp-card">
         <div class="exp-logo">
-          <img src="logos/tue.png" alt="TU/e">
+          <img src="logos/tue.png" alt="TU/e" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">TU/e</span>
         </div>
         <div class="exp-content">
           <h3>Data Scientist · Engineering Doctorate</h3>
@@ -581,7 +582,7 @@ img { max-width: 100%; display: block; }
 
       <article class="exp-card">
         <div class="exp-logo">
-          <img src="logos/vanlaschot.png" alt="Van Lanschot Kempen">
+          <img src="logos/vanlaschot.png" alt="Van Lanschot Kempen" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Van Lanschot Kempen</span>
         </div>
         <div class="exp-content">
           <h3>Data Analyst</h3>
