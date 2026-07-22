@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Angela Barone | Machine Learning Engineer & Data Scientist</title>
+<meta name="description" content="Angela Barone — Machine Learning Engineer and Data Scientist. Engineering Doctorate at TU/e. LLMs, RAG, knowledge graphs, explainable AI, and human-AI interaction." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FAFAF8;
+  --cream: #F2F1ED;
+  --surface: #FFFFFF;
+  --ink: #171717;
+  --muted: #60605B;
+  --faint: #969690;
+  --line: #E7E4DD;
+
+  --accent: #2F7A5A;
+  --accent-dark: #1F5C41;
+  --accent-soft: #E8F3ED;
+  --accent-pale: #F3FAF6;
+
+  --shadow: 0 1px 2px rgba(20,20,20,.035), 0 8px 26px rgba(20,20,20,.055);
+  --shadow-hover: 0 3px 8px rgba(20,20,20,.065), 0 18px 40px rgba(20,20,20,.085);
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+
+  --max: 980px;
+  --narrow: 720px;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+.container.narrow { max-width: var(--narrow); }
+
+.section { padding: 86px 0; }
+.section.alt { background: var(--cream); }
+
+.section-title { text-align: center; margin-bottom: 44px; }
+.section-title h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 40px); line-height: 1.1; font-weight: 700; color: var(--ink); }
+.section-title::after { content: ""; display: block; width: 34px; height: 3px; background: var(--accent); margin: 13px auto 0; border-radius: 999px; }
+
+/* =========================
+   NAV
+========================= */
+.nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 93%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(0,0,0,.035); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 28px; height: 58px; display: grid; grid-template-columns: 80px 1fr 90px; align-items: center; }
+.nav-links { display: flex; align-items: center; justify-content: center; gap: 32px; }
+.nav-links a { font-size: 13px; color: var(--ink); font-weight: 500; transition: color .16s ease; }
+.nav-links a:hover { color: var(--accent); }
+.resume-pill { justify-self: end; background: var(--ink); color: #fff; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; transition: transform .16s ease, background .16s ease; }
+.resume-pill:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+/* =========================
+   HERO
+========================= */
+.hero { padding: 74px 0 52px; }
+.hero-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 230px 1fr; gap: 58px; align-items: start; }
+.hero-left { display: flex; flex-direction: column; align-items: center; }
+.photo-card { width: 180px; height: 252px; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 22px; display: grid; place-items: center; }
+.photo-card img { width: 100%; height: 100%; object-fit: cover; }
+.photo-fallback { width: 100%; height: 100%; display: none; place-items: center; background: linear-gradient(145deg, #EAF4EF, #FFFFFF); color: var(--accent); font-family: var(--font-display); font-size: 54px; font-weight: 700; }
+.socials { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 20px; }
+.socials a { width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; color: var(--muted); transition: border-color .16s ease, color .16s ease, background .16s ease; }
+.socials a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-pale); }
+.socials svg { width: 16px; height: 16px; }
+.contact-lines { display: flex; flex-direction: column; gap: 8px; align-items: center; color: var(--muted); font-size: 12.5px; text-align: center; }
+.contact-lines span { display: inline-flex; align-items: center; gap: 6px; }
+.contact-lines svg { width: 13px; height: 13px; color: var(--faint); }
+
+.hero-content { padding-top: 16px; }
+.hero-content h1 { font-family: var(--font-display); font-size: clamp(42px, 6vw, 59px); line-height: 1.02; font-weight: 700; margin-bottom: 10px; letter-spacing: -.02em; }
+.hero-subtitle { color: var(--accent); font-size: 17px; font-weight: 500; margin-bottom: 25px; }
+.hero-bio { color: var(--muted); font-size: 15.5px; line-height: 1.85; max-width: 610px; }
+.hero-bio p { margin-bottom: 18px; }
+.hero-bio strong { color: var(--ink); font-weight: 700; }
+.hero-actions { display: flex; gap: 14px; align-items: center; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease; }
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.btn-secondary { background: var(--surface); border: 1px solid var(--line); color: var(--ink); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+/* =========================
+   ORGANIZATION CARDS
+========================= */
+.org-strip { padding: 8px 0 70px; }
+.org-grid { max-width: 840px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.org-card { min-height: 168px; background: var(--surface); border: 1px solid var(--line); border-radius: 34px; box-shadow: 0 1px 2px rgba(0,0,0,.025); padding: 28px 18px 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform .18s ease, box-shadow .18s ease; }
+.org-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.logo-slot { height: 78px; width: 100%; display: grid; place-items: center; margin-bottom: 16px; }
+.logo-slot img { max-height: 54px; width: auto; max-width: 110px; object-fit: contain; }
+.org-label { font-size: 12px; color: var(--muted); text-align: center; margin-top: auto; }
+
+/* =========================
+   NEWS
+========================= */
+.news-list { display: flex; flex-direction: column; }
+.news-item { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.news-item:last-child { border-bottom: none; }
+.news-date { font-size: 12px; color: var(--accent); font-weight: 700; line-height: 1.35; }
+.news-place { display: block; color: var(--faint); font-weight: 500; margin-top: 3px; }
+.news-text { font-size: 14px; color: var(--muted); }
+.news-text strong { color: var(--ink); font-weight: 700; }
+
+/* =========================
+   CURRENT WORK
+========================= */
+.work-list { display: flex; flex-direction: column; gap: 34px; }
+.work-card { background: var(--surface); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; box-shadow: var(--shadow); border: 1px solid var(--line); }
+.work-card.reverse .work-visual { order: 2; }
+.work-visual { min-height: 260px; background: #F8F8F6; display: grid; place-items: center; padding: 28px; border-right: 1px solid var(--line); }
+.work-card.reverse .work-visual { border-right: none; border-left: 1px solid var(--line); }
+.mock-screen { width: 100%; max-width: 330px; min-height: 190px; border-radius: 12px; background: radial-gradient(circle at 20% 25%, rgba(47,122,90,.16), transparent 22%), radial-gradient(circle at 80% 70%, rgba(47,122,90,.14), transparent 24%), linear-gradient(135deg, #FFFFFF, #F2F6F3); border: 1px solid var(--line); display: grid; place-items: center; text-align: center; padding: 24px; }
+.mock-screen.dark { background: radial-gradient(circle at 30% 30%, rgba(47,122,90,.35), transparent 20%), linear-gradient(135deg, #17211D, #0E1210); color: white; border-color: #26332D; }
+.mock-title { font-family: var(--font-display); font-size: 25px; line-height: 1.1; color: var(--accent); }
+.mock-screen.dark .mock-title { color: #DDF2E8; }
+.work-content { padding: 38px 36px; }
+.work-content h3 { font-family: var(--font-display); font-size: 27px; line-height: 1.15; margin-bottom: 10px; }
+.pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.pill { font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 4px 9px; border-radius: 999px; }
+.work-content p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+
+/* =========================
+   PUBLICATIONS
+========================= */
+.publication-list { display: flex; flex-direction: column; gap: 26px; }
+.publication-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 30px; box-shadow: var(--shadow); }
+.publication-feature { display: grid; grid-template-columns: 210px 1fr; gap: 30px; }
+.thesis-cover { min-height: 285px; border: 1px solid var(--line); background: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+.thesis-cover-title { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; letter-spacing: .09em; line-height: 1.3; }
+.publication-card h3 { font-family: var(--font-display); font-size: 25px; line-height: 1.2; margin: 12px 0 12px; }
+.publication-card p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px; }
+.publication-card strong { color: var(--ink); }
+.metric-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0; }
+.metric { background: var(--accent-pale); border: 1px solid var(--accent-soft); color: var(--accent-dark); padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+.small-btn { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; border: 1px solid var(--line); border-radius: 9px; padding: 8px 13px; font-size: 12px; font-weight: 700; color: var(--ink); background: var(--surface); }
+.small-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* =========================
+   EDUCATION / EXPERIENCE
+========================= */
+.education-list, .experience-list { display: flex; flex-direction: column; gap: 24px; }
+.edu-card, .exp-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 30px; display: grid; grid-template-columns: 150px 1fr; gap: 34px; align-items: center; }
+.edu-logo, .exp-logo { display: grid; place-items: center; min-height: 90px; }
+.edu-logo img, .exp-logo img { max-height: 50px; width: auto; max-width: 120px; }
+.edu-content h3, .exp-content h3 { font-size: 18px; margin-bottom: 4px; }
+.edu-program, .exp-org { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.edu-detail, .exp-detail { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.edu-detail strong { color: var(--ink); }
+.edu-meta, .exp-tags { margin-top: 9px; display: flex; gap: 8px; flex-wrap: wrap; }
+.edu-meta span, .exp-tag { font-size: 11px; font-weight: 700; color: var(--accent-dark); background: var(--accent-soft); border-radius: 999px; padding: 4px 9px; }
+.exp-content ul { margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+/* =========================
+   CERTIFICATIONS
+========================= */
+.cert-title { text-align: center; margin: 70px 0 30px; }
+.cert-title h3 { font-family: var(--font-display); font-size: 27px; }
+.cert-title::after { content: ""; display: block; width: 28px; height: 3px; background: var(--accent); margin: 10px auto 0; border-radius: 999px; }
+.cert-grid { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.cert-card { width: 116px; height: 116px; border-radius: 30px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); display: grid; place-items: center; text-align: center; padding: 16px; }
+.cert-card strong { display: block; font-size: 12px; line-height: 1.25; }
+.cert-card span { display: block; color: var(--accent); font-size: 11px; margin-top: 4px; font-weight: 700; }
+
+/* =========================
+   LEADERSHIP / TEACHING
+========================= */
+.leadership-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.lead-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; box-shadow: var(--shadow); }
+.lead-card h3 { font-size: 16px; margin-bottom: 4px; }
+.lead-org { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.lead-card p { color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+/* =========================
+   PAST PROJECTS
+========================= */
+.filter-pills { display: flex; justify-content: center; gap: 9px; flex-wrap: wrap; margin: -22px 0 32px; }
+.filter-pill { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 8px 15px; font-size: 12px; font-weight: 600; }
+.filter-pill.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.project-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.project-image { height: 210px; background: radial-gradient(circle at 20% 20%, rgba(47,122,90,.18), transparent 24%), radial-gradient(circle at 80% 80%, rgba(47,122,90,.12), transparent 28%), linear-gradient(135deg, #FFFFFF, #F3F7F4); border-bottom: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); font-family: var(--font-display); font-size: 24px; text-align: center; padding: 24px; }
+.project-image.dark { background: radial-gradient(circle at 30% 30%, rgba(47,122,90,.35), transparent 20%), linear-gradient(135deg, #17211D, #0E1210); color: #DDF2E8; }
+.project-body { padding: 22px; }
+.project-body h3 { font-size: 17px; margin-bottom: 10px; }
+.project-body p { color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+/* =========================
+   SKILLS
+========================= */
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 18px 22px; }
+.skill-title { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; font-weight: 800; margin-bottom: 8px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-tags span { font-size: 12px; background: #F5F4F0; border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px; }
+
+/* =========================
+   BEYOND WORK
+========================= */
+.beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
+.beyond-item { color: var(--muted); font-size: 14px; }
+.beyond-icon { color: var(--accent); font-size: 24px; margin-bottom: 8px; }
+.beyond-item strong { display: block; color: var(--ink); margin-bottom: 3px; }
+.language-title { text-align: center; margin: 48px 0 14px; }
+.language-title h3 { font-family: var(--font-display); font-size: 27px; }
+.language-title::after { content: ""; display: block; width: 28px; height: 3px; background: var(--accent); margin: 10px auto 0; border-radius: 999px; }
+.language-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.language-chips span { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+
+/* =========================
+   FOOTER
+========================= */
+.footer { border-top: 1px solid var(--line); padding: 42px 0; background: var(--bg); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; color: var(--muted); font-size: 13px; }
+.footer strong { color: var(--ink); font-family: var(--font-display); font-size: 17px; }
+.footer-center { text-align: center; }
+.footer-right { text-align: right; }
+.footer a { color: var(--accent); font-weight: 700; }
+.back-top { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .nav-inner { grid-template-columns: 1fr auto; }
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-left { align-items: flex-start; }
+  .socials, .contact-lines { align-items: flex-start; justify-content: flex-start; }
+  .org-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-card, .work-card.reverse { grid-template-columns: 1fr; }
+  .work-card.reverse .work-visual { order: 0; }
+  .work-visual, .work-card.reverse .work-visual { border-left: none; border-right: none; border-bottom: 1px solid var(--line); }
+  .publication-feature, .edu-card, .exp-card { grid-template-columns: 1fr; }
+  .project-grid, .skills-grid, .leadership-grid, .beyond-grid { grid-template-columns: 1fr; }
+  .news-item { grid-template-columns: 1fr; gap: 4px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-right { text-align: center; }
+}
+@media (max-width: 520px) {
+  .container { padding: 0 20px; }
+  .org-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#work">Work</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <a class="resume-pill" href="assets/Angela_Barone_CV.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="about">
+  <div class="container">
+    <div class="hero-inner">
+      <aside class="hero-left">
+        <div class="photo-card">
+          <img src="assets/angela.jpg" alt="Angela Barone" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+          <div class="photo-fallback">AB</div>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.7 1.7 0 1 1 8.2 6.6 1.7 1.7 0 0 1 6.5 8.3zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6S12.6 13 12.6 14.2V19h-3v-9h2.9v1.2h.04a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.66 2 3.66 4.7z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.6C24 5.9 18.6.5 12 .5z"/></svg></a>
+          <a href="mailto:a.barone@tue.nl" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+        </div>
+        <div class="contact-lines">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>a.barone@tue.nl</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Rotterdam, NL</span>
+        </div>
+      </aside>
+
+      <main class="hero-content">
+        <h1>Angela Barone</h1>
+        <div class="hero-subtitle">Machine Learning Engineering | Engineering Doctorate, TU/e</div>
+        <div class="hero-bio">
+          <p>I am a data scientist and machine learning engineer pursuing an <strong>Engineering Doctorate at Eindhoven University of Technology</strong>. My work sits between industry and academia: building production AI systems for client companies while researching <strong>LLM bias and human-AI interaction</strong>.</p>
+          <p>I hold a <strong>Cum Laude MSc in Data Science</strong> from Tilburg University and a <strong>Laurea Magistrale in Giurisprudenza</strong> from Università Bocconi, giving me an interdisciplinary background across AI, law, data protection, and decision-making.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">View My Work</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+        </div>
+      </main>
+    </div>
+  </div>
+</header>
+
+<!-- LOGOS -->
+<section class="org-strip">
+  <div class="container">
+    <div class="org-grid" style="grid-template-columns: repeat(7, 1fr); gap: 14px; max-width: 100%;">
+      
+      <!-- TU/e -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <!-- Replace src with actual logo path -->
+          <img src="logos/tue.svg" alt="TU/e">
+        </div>
+        <div class="org-label">University</div>
+      </div>
+      
+      <!-- Tilburg -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/tilburg.svg" alt="Tilburg University">
+        </div>
+        <div class="org-label">University</div>
+      </div>
+      
+      <!-- Bocconi -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/bocconi.svg" alt="Università Bocconi">
+        </div>
+        <div class="org-label">University</div>
+      </div>
+
+      <!-- Censo -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/censo.svg" alt="Censo">
+        </div>
+        <div class="org-label">Client Project</div>
+      </div>
+      
+      <!-- Wärtsilä -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/wartsila.svg" alt="Wärtsilä">
+        </div>
+        <div class="org-label">Client Project</div>
+      </div>
+      
+      <!-- Forescout -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/forescout.svg" alt="Forescout">
+        </div>
+        <div class="org-label">Client Project</div>
+      </div>
+
+      <!-- Van Lanschot Kempen (Last) -->
+      <div class="org-card" style="padding: 20px 10px;">
+        <div class="logo-slot">
+          <img src="logos/vanlanschot.svg" alt="Van Lanschot Kempen">
+        </div>
+        <div class="org-label">Experience</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="news">
+  <div class="container narrow">
+    <div class="section-title"><h2>News</h2></div>
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="news-date">Jul 2026<span class="news-place">Oxford, UK</span></div>
+        <div class="news-text">
+          Participated in the <strong>Human–Algorithm Interaction (HAI) Workshop</strong> at Saïd Business School, University of Oxford. Discussed LLM evaluations, hallucination risks, and the need to preserve pluralism of opinions rather than assuming a single "correct" answer in human-AI collaboration.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026<span class="news-place">TU/e</span></div>
+        <div class="news-text">Continuing my <strong>Engineering Doctorate at TU/e</strong>, working on client-facing AI engineering projects and doctoral research on LLM bias and human-AI interaction.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">Jun 2025<span class="news-place">Tilburg, NL</span></div>
+        <div class="news-text">Graduated <strong>Cum Laude</strong> from the MSc Data Science programme at Tilburg University with an 8.78 average.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025<span class="news-place">Tilburg, NL</span></div>
+        <div class="news-text">MSc thesis selected for the <strong>Best Thesis Symposium</strong>, top 5 out of approximately 500 theses.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2024<span class="news-place">Netherlands</span></div>
+        <div class="news-text">Won <strong>2nd place</strong> in a hackathon organised by Nestlé and the University of Twente.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2024<span class="news-place">Amsterdam, NL</span></div>
+        <div class="news-text">Finalist at <strong>bunq’s Hackathon on Agentic AI</strong>.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT WORK (Only Censo) -->
+<section class="section alt" id="work">
+  <div class="container">
+    <div class="section-title"><h2>Current Work</h2></div>
+    <div class="work-list">
+
+      <!-- Censo RAG -->
+      <article class="work-card">
+        <div class="work-visual">
+          <div class="mock-screen">
+            <div class="mock-title">Hybrid RAG<br>on Azure</div>
+          </div>
+        </div>
+        <div class="work-content">
+          <h3>Censo</h3>
+          <div class="pills">
+            <span class="pill">RAG</span>
+            <span class="pill">Knowledge Graph</span>
+            <span class="pill">Azure</span>
+            <span class="pill">Evaluation</span>
+          </div>
+          <p>Built a hybrid RAG system with a foundational knowledge graph for a green energy provider. The system includes front end, back end, and a custom evaluation framework.</p>
+        </div>
+      </article>
+
+      <!-- Censo ETL -->
+      <article class="work-card reverse">
+        <div class="work-visual">
+          <div class="mock-screen dark">
+            <div class="mock-title">Enterprise ETL<br>Pipeline</div>
+          </div>
+        </div>
+        <div class="work-content">
+          <h3>Censo</h3>
+          <div class="pills">
+            <span class="pill">ETL</span>
+            <span class="pill">Data Modeling</span>
+            <span class="pill">Document Processing</span>
+            <span class="pill">Azure</span>
+          </div>
+          <p>Designed and deployed an end-to-end ETL pipeline connecting raw data ingestion, transformations, and storage. Fully deployed on Azure within a team using Git branching workflows.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <div class="container narrow">
+    <div class="section-title"><h2>Publications & Research</h2></div>
+    <div class="publication-list">
+
+      <article class="publication-card publication-feature">
+        <div class="thesis-cover">
+          <div class="thesis-cover-title">Predicting and Explaining Electoral Support for the Far-Right in the Netherlands</div>
+        </div>
+        <div>
+          <div class="pills"><span class="pill">Machine Learning</span><span class="pill">Explainable AI</span></div>
+          <h3>Predicting and Explaining Electoral Support for the Far-Right in the Netherlands: From Boomers to Zoomers</h3>
+          <p>MSc thesis using machine learning to predict far-right voting in the Netherlands. Compared LightGBM, Random Forest, and Logistic Regression, achieving <strong>93% accuracy</strong> and <strong>AUC 0.97</strong>.</p>
+          <p>Using SHAP, I unpacked why people vote this way. In 2010, immigration attitudes were the dominant predictor; by 2023, leader sympathy and party identity had taken over. Data showed Gen Z is not more extreme than other generations, while Millennials showed the widest political range.</p>
+          <div class="metric-row">
+            <span class="metric">Accuracy: 93%</span>
+            <span class="metric">AUC: 0.97</span>
+            <span class="metric">SHAP Explainability</span>
+          </div>
+          <a class="small-btn" href="#" target="_blank" rel="noopener">View Thesis</a>
+        </div>
+      </article>
+
+      <article class="publication-card">
+        <div class="pills"><span class="pill">Doctoral Research</span><span class="pill">LLM Bias</span></div>
+        <h3>LLM Bias and Human-AI Interaction in Professional Debates</h3>
+        <p>Ongoing Engineering Doctorate research at TU/e. Investigating how large language models influence professional debates, decision-making, and human-AI collaboration.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION + CERTIFICATIONS -->
+<section class="section alt" id="education">
+  <div class="container narrow">
+    
+    <div class="section-title"><h2>Education</h2></div>
+    <div class="education-list">
+      <article class="edu-card">
+        <div class="edu-logo">
+          <!-- Replace src with actual logo path -->
+          <img src="logos/tue.svg" alt="TU/e">
+        </div>
+        <div class="edu-content">
+          <h3>Eindhoven University of Technology</h3>
+          <div class="edu-program">Engineering Doctorate in Data Science</div>
+          <div class="edu-detail">Industry-academia programme. Building production AI setups while researching alignment and conversational LLM biases. Over half the programme is spent inside partner companies leading enterprise AI projects.</div>
+          <div class="edu-meta"><span>Sep 2025 – Present</span></div>
+        </div>
+      </article>
+
+      <article class="edu-card">
+        <div class="edu-logo">
+          <img src="logos/tilburg.svg" alt="Tilburg University">
+        </div>
+        <div class="edu-content">
+          <h3>Tilburg University</h3>
+          <div class="edu-program">MSc Data Science — Cum Laude</div>
+          <div class="edu-detail">Average grade: <strong>8.78</strong>. Thesis graded 8.7 and selected as a top-5 thesis out of approx. 500 students for the Best Thesis Symposium.</div>
+          <div class="edu-meta"><span>Jan 2024 – Jun 2025</span><span>8.78 / 10</span></div>
+        </div>
+      </article>
+
+      <article class="edu-card">
+        <div class="edu-logo">
+          <img src="logos/bocconi.svg" alt="Bocconi">
+        </div>
+        <div class="edu-content">
+          <h3>Università Bocconi</h3>
+          <div class="edu-program">Laurea Magistrale in Giurisprudenza — International Track</div>
+          <div class="edu-detail">Final grade: <strong>100/110</strong>. Integrated with multiple exams from the Economics and Finance department. Thesis: <em>“The Silkroad of Information Management: China's data protection framework.”</em></div>
+          <div class="edu-meta"><span>2021</span><span>100 / 110</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cert-title"><h3>Certifications</h3></div>
+    <div class="cert-grid">
+      <div class="cert-card"><div><strong>Databricks</strong><span>Ongoing</span></div></div>
+      <div class="cert-card"><div><strong>Microsoft Azure</strong><span>Ongoing</span></div></div>
+      <div class="cert-card"><div><strong>Dutch A2+</strong><span>Certified</span></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container narrow">
+    <div class="section-title"><h2>Work Experience</h2></div>
+    <div class="experience-list">
+
+      <article class="exp-card">
+        <div class="exp-logo">
+          <img src="logos/tue.svg" alt="TU/e">
+        </div>
+        <div class="exp-content">
+          <h3>Data Scientist · Engineering Doctorate</h3>
+          <div class="exp-org">Eindhoven University of Technology</div>
+          <div class="exp-tags"><span class="exp-tag">Eindhoven, NL</span><span class="exp-tag">Sep 2025 – Present</span></div>
+          <ul>
+            <li>Delivering consulting projects for client companies including Censo, Wärtsilä, and Forescout.</li>
+            <li>Building production AI systems involving RAG, knowledge graphs, LLM pipelines, and anomaly detection.</li>
+            <li>Conducting doctoral research on LLM bias and human-AI interaction in professional debates.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-logo">
+          <img src="logos/vanlanschot.svg" alt="Van Lanschot Kempen">
+        </div>
+        <div class="exp-content">
+          <h3>Data Analyst</h3>
+          <div class="exp-org">Van Lanschot Kempen</div>
+          <div class="exp-tags"><span class="exp-tag">Amsterdam, NL</span><span class="exp-tag">Feb 2025 – Sep 2025</span></div>
+          <ul>
+            <li>Automated end-to-end analysis of employee survey data using Power BI dashboards.</li>
+            <li>Built a Python-based sentiment analysis pipeline for open-ended survey responses.</li>
+            <li>Implemented an automated data pipeline connecting Microsoft Surveys, SQL databases, and Power Automate.</li>
+            <li>Translated qualitative feedback into actionable insights for data-driven decision-making in a banking context.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING / LEADERSHIP -->
+<section class="section alt">
+  <div class="container narrow">
+    <div class="section-title"><h2>Teaching &amp; Leadership</h2></div>
+    <div class="leadership-grid">
+      <article class="lead-card">
+        <h3>Project Team Leader</h3>
+        <div class="lead-org">Wärtsilä · TU/e Engineering Doctorate</div>
+        <p>Led the LLMs for predictive maintenance project, coordinating technical work around document processing, Qwen inference, HPC deployment, and evaluation.</p>
+      </article>
+      <article class="lead-card">
+        <h3>Research Reporting for Clients</h3>
+        <div class="lead-org">TU/e Partner Companies</div>
+        <p>Produced applied research reports for client companies, translating technical findings into clear recommendations for business and engineering stakeholders.</p>
+      </article>
+      <article class="lead-card">
+        <h3>Hackathon Collaboration</h3>
+        <div class="lead-org">Nestlé × University of Twente · bunq</div>
+        <p>Collaborated in fast-paced AI hackathon settings, including a 2nd place finish at the Nestlé hackathon and finalist placement at bunq’s Agentic AI hackathon.</p>
+      </article>
+      <article class="lead-card">
+        <h3>Stakeholder Enablement</h3>
+        <div class="lead-org">Van Lanschot Kempen</div>
+        <p>Designed dashboards and analytics workflows that helped non-technical stakeholders interpret qualitative feedback and make data-driven decisions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PAST PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-title"><h2>Past Projects</h2></div>
+
+    <div class="filter-pills">
+      <span class="filter-pill active">All</span>
+      <span class="filter-pill">NLP</span>
+      <span class="filter-pill">Explainable AI</span>
+      <span class="filter-pill">Data Engineering</span>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- Moved Wärtsilä here -->
+      <article class="project-card">
+        <div class="project-image dark">LLMs for Maintenance</div>
+        <div class="project-body">
+          <h3>Wärtsilä: Predictive Maintenance</h3>
+          <div class="pills"><span class="pill">Qwen</span><span class="pill">Hugging Face</span><span class="pill">Multi-GPU HPC</span></div>
+          <p>Transformed unstructured marine service PDFs into structured data. Engineered a Qwen inference pipeline deployed on TU/e's HPC cluster.</p>
+        </div>
+      </article>
+
+      <!-- Moved Forescout here -->
+      <article class="project-card">
+        <div class="project-image">Anomaly Detection</div>
+        <div class="project-body">
+          <h3>Forescout: Network Security</h3>
+          <div class="pills"><span class="pill">Semi-supervised ML</span><span class="pill">XGBoost</span><span class="pill">Embeddings</span></div>
+          <p>Designed positive-unlabeled learning pipelines for large-scale asset classification using network telemetry, embeddings, and boosting.</p>
+        </div>
+      </article>
+
+      <!-- Existing past projects -->
+      <article class="project-card">
+        <div class="project-image dark">Explainable Voting Models</div>
+        <div class="project-body">
+          <h3>Far-Right Voting Prediction</h3>
+          <div class="pills"><span class="pill">LightGBM</span><span class="pill">Random Forest</span><span class="pill">SHAP</span></div>
+          <p>Predicted far-right electoral support across generations and explained changing political drivers through interpretable machine learning.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">Survey Analytics</div>
+        <div class="project-body">
+          <h3>Van Lanschot: Sentiment Pipeline</h3>
+          <div class="pills"><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Power BI</span></div>
+          <p>Automated employee survey analytics with real-time ingestion, sentiment analysis, and stakeholder-facing Power BI dashboards.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image dark">Agentic AI Hackathon</div>
+        <div class="project-body">
+          <h3>bunq Hackathon on Agentic AI</h3>
+          <div class="pills"><span class="pill">Agentic AI</span><span class="pill">LLMs</span></div>
+          <p>Finalist project exploring agentic AI systems and practical product-oriented AI workflows.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">Nestlé Hackathon</div>
+        <div class="project-body">
+          <h3>Nestlé × University of Twente</h3>
+          <div class="pills"><span class="pill">Data Science</span><span class="pill">2nd Place</span></div>
+          <p>Awarded 2nd place in an industry-university hackathon focused on data-driven problem solving.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL SKILLS -->
+<section class="section alt" id="skills">
+  <div class="container">
+    <div class="section-title"><h2>Technical Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-title">Machine Learning &amp; Data</div>
+        <div class="skill-tags"><span>PyTorch</span><span>TensorFlow</span><span>Hugging Face</span><span>XGBoost</span><span>LightGBM</span><span>SHAP</span><span>Spark</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">LLMs &amp; NLP</div>
+        <div class="skill-tags"><span>RAG</span><span>Knowledge Graphs</span><span>Agentic AI</span><span>Qwen</span><span>LLM Evaluation</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Engineering &amp; MLOps</div>
+        <div class="skill-tags"><span>Azure</span><span>Docker</span><span>Git</span><span>MLOps</span><span>ETL</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Analytics &amp; Visualization</div>
+        <div class="skill-tags"><span>Power BI</span><span>Python</span><span>SQL</span><span>Power Automate</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND WORK -->
+<section class="section">
+  <div class="container narrow">
+    <div class="section-title"><h2>Beyond Work</h2></div>
+    
+    <div class="beyond-grid">
+      <div class="beyond-item"><div class="beyond-icon">🌿</div><strong>Gardening</strong>Growing things slowly and carefully.</div>
+      <div class="beyond-item"><div class="beyond-icon">🏛️</div><strong>Interior Design</strong>Spaces, materials, light, and balance.</div>
+      <div class="beyond-item"><div class="beyond-icon">📷</div><strong>Photography</strong>Observing patterns outside datasets.</div>
+    </div>
+
+    <div class="language-title"><h3>Languages</h3></div>
+    <div class="language-chips">
+      <span>English</span>
+      <span>Italian</span>
+      <span>Spanish (B2)</span>
+      <span>French (B2)</span>
+      <span>Dutch (A2+ Certified)</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div><strong>Angela Barone</strong><br>Machine Learning Engineering | Engineering Doctorate, TU/e</div>
+    <div class="footer-center">
+      <div class="socials" style="margin-bottom: 4px;">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.7 1.7 0 1 1 8.2 6.6 1.7 1.7 0 0 1 6.5 8.3zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6S12.6 13 12.6 14.2V19h-3v-9h2.9v1.2h.04a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.66 2 3.66 4.7z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.6C24 5.9 18.6.5 12 .5z"/></svg></a>
+        <a href="mailto:a.barone@tue.nl" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+      </div>
+      <a class="back-top" href="#top">↑</a><br><span>Back to top</span>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:a.barone@tue.nl">a.barone@tue.nl</a><br>Rotterdam, Netherlands<br>© 2026
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
