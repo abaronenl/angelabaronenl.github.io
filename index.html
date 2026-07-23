@@ -97,13 +97,15 @@ img { max-width: 100%; display: block; }
 /* =========================
    ORGANIZATION CARDS
 ========================= */
-.org-strip { padding: 8px 0 70px; }
-.org-grid { max-width: 840px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.org-card { min-height: 168px; background: var(--surface); border: 1px solid var(--line); border-radius: 34px; box-shadow: 0 1px 2px rgba(0,0,0,.025); padding: 28px 18px 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform .18s ease, box-shadow .18s ease; }
-.org-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.logo-slot { height: 100px; width: 100%; display: grid; place-items: center; margin-bottom: 14px; }
-.logo-slot img { max-height: 88px; width: auto; max-width: 150px; object-fit: contain; }
-.org-label { font-size: 12px; color: var(--muted); text-align: center; margin-top: auto; }
+.org-strip { padding: 8px 0 74px; }
+.org-grid { max-width: 880px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.org-card { flex: 0 1 calc(25% - 12px); min-width: 168px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.025); padding: 26px 22px 18px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.org-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #DAD6CC; }
+.logo-slot { width: 100%; display: grid; place-items: center; margin-bottom: 16px; }
+/* every logo file is normalised to the same 2:1 canvas, so a single
+   width rule renders them all at a consistent optical size */
+.logo-slot img { width: 100%; height: auto; display: block; }
+.org-label { font-size: 11.5px; letter-spacing: .02em; color: var(--muted); text-align: center; }
 
 /* =========================
    NEWS
@@ -241,7 +243,7 @@ img { max-width: 100%; display: block; }
   .hero-inner { grid-template-columns: 1fr; gap: 32px; }
   .hero-left { align-items: flex-start; }
   .socials, .contact-lines { align-items: flex-start; justify-content: flex-start; }
-  .org-grid { grid-template-columns: repeat(2, 1fr); }
+  .org-card { flex: 0 1 calc(33.333% - 11px); }
   .work-card, .work-card.reverse { grid-template-columns: 1fr; }
   .work-card.reverse .work-visual { order: 0; }
   .work-visual, .work-card.reverse .work-visual { border-left: none; border-right: none; border-bottom: 1px solid var(--line); }
@@ -253,7 +255,7 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 520px) {
   .container { padding: 0 20px; }
-  .org-grid { grid-template-columns: 1fr; }
+  .org-card { flex: 0 1 calc(50% - 8px); min-width: 0; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; }
 }
@@ -319,10 +321,10 @@ img { max-width: 100%; display: block; }
 <!-- LOGOS -->
 <section class="org-strip">
   <div class="container">
-    <div class="org-grid" style="grid-template-columns: repeat(7, 1fr); gap: 14px; max-width: 100%;">
+    <div class="org-grid">
 
       <!-- TU/e -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/tue.png" alt="TU/e" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">TU/e</span>
         </div>
@@ -330,7 +332,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Tilburg -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/tilburg.png" alt="Tilburg University" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Tilburg University</span>
         </div>
@@ -338,7 +340,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Bocconi -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/bocconi.png" alt="Università Bocconi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Università Bocconi</span>
         </div>
@@ -346,7 +348,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Censo -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/censo.png" alt="Censo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Censo</span>
         </div>
@@ -354,7 +356,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Wärtsilä -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/wartsila.png" alt="Wärtsilä" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Wärtsilä</span>
         </div>
@@ -362,7 +364,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Forescout -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/forescout.png" alt="Forescout" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Forescout</span>
         </div>
@@ -370,7 +372,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- Van Lanschot Kempen (Last) -->
-      <div class="org-card" style="padding: 20px 10px;">
+      <div class="org-card">
         <div class="logo-slot">
           <img src="logos/vanlaschot.png" alt="Van Lanschot Kempen" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="logo-fallback">Van Lanschot Kempen</span>
         </div>
