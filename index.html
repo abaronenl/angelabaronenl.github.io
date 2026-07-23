@@ -98,10 +98,10 @@ img { max-width: 100%; display: block; }
    ORGANIZATION CARDS
 ========================= */
 .org-strip { padding: 8px 0 74px; }
-.org-grid { max-width: 880px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-.org-card { flex: 0 1 calc(25% - 12px); min-width: 168px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.025); padding: 26px 22px 18px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.org-grid { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.org-card { flex: 0 1 calc(25% - 12px); min-width: 168px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.025); padding: 20px 12px 12px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
 .org-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #DAD6CC; }
-.logo-slot { width: 100%; display: grid; place-items: center; margin-bottom: 16px; }
+.logo-slot { width: 100%; display: grid; place-items: center; margin-bottom: 10px; }
 /* every logo file is normalised to the same 2:1 canvas, so a single
    width rule renders them all at a consistent optical size */
 .logo-slot img { width: 100%; height: auto; display: block; }
@@ -263,6 +263,7 @@ img { max-width: 100%; display: block; }
 </style>
 </head>
 
+<!-- BUILD-v3 : grid layout + enlarged logos -->
 <body id="top">
 
 <!-- NAV -->
